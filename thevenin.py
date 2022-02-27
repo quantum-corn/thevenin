@@ -45,7 +45,11 @@ vth=u_V(float(analysis.load))
 
 # %% rth
 <<<<<<< HEAD
+<<<<<<< HEAD
 circuit.RL.detach()
+=======
+circuit.R('L', 'load', circuit.gnd, rl)
+>>>>>>> 360b17556c5ccdfbc7159ee112c761fdfc4e1620
 =======
 circuit.R('L', 'load', circuit.gnd, rl)
 >>>>>>> 360b17556c5ccdfbc7159ee112c761fdfc4e1620
@@ -54,7 +58,11 @@ circuit.R('L', 'load', circuit.gnd, rl)
 simulator = circuit.simulator()
 analysis = simulator.operating_point()
 <<<<<<< HEAD
+<<<<<<< HEAD
 vth=u_V(float(analysis.load))
+=======
+vl=u_V(float(analysis.load))
+>>>>>>> 360b17556c5ccdfbc7159ee112c761fdfc4e1620
 =======
 vl=u_V(float(analysis.load))
 >>>>>>> 360b17556c5ccdfbc7159ee112c761fdfc4e1620
