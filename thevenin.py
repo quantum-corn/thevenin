@@ -37,20 +37,27 @@ circuit.R('1', 'input', 1, 1@u_kOhm)
 circuit.R('3', 1, 'load', 1.5@u_kOhm)
 circuit.R('2', 1, circuit.gnd, 2@u_kOhm)
 circuit.V('', 'input', circuit.gnd, 72@u_V)
-circuit.R('L', 'load', circuit.gnd, rl)
-
-# %% simulate
-simulator = circuit.simulator()
-analysis = simulator.operating_point()
-vl=u_V(float(analysis.load))
-
-# %% rth
-circuit.RL.detach()
 
 # %% simulate
 simulator = circuit.simulator()
 analysis = simulator.operating_point()
 vth=u_V(float(analysis.load))
+
+# %% rth
+<<<<<<< HEAD
+circuit.RL.detach()
+=======
+circuit.R('L', 'load', circuit.gnd, rl)
+>>>>>>> 360b17556c5ccdfbc7159ee112c761fdfc4e1620
+
+# %% simulate
+simulator = circuit.simulator()
+analysis = simulator.operating_point()
+<<<<<<< HEAD
+vth=u_V(float(analysis.load))
+=======
+vl=u_V(float(analysis.load))
+>>>>>>> 360b17556c5ccdfbc7159ee112c761fdfc4e1620
 
 # %% display
 il=vl/rl
