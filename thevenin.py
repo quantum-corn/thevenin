@@ -37,6 +37,13 @@ circuit.R('1', 'input', 1, 1@u_kOhm)
 circuit.R('3', 1, 'load', 1.5@u_kOhm)
 circuit.R('2', 1, circuit.gnd, 2@u_kOhm)
 circuit.V('', 'input', circuit.gnd, 72@u_V)
+
+# %% simulate
+simulator = circuit.simulator()
+analysis = simulator.operating_point()
+vth=u_V(float(analysis.load))
+
+# %% rth
 circuit.R('L', 'load', circuit.gnd, rl)
 
 # %% simulate
@@ -44,22 +51,9 @@ simulator = circuit.simulator()
 analysis = simulator.operating_point()
 vl=u_V(float(analysis.load))
 
-# %% rth
-circuit = Circuit("Resistor network")
-circuit.R('1', circuit.gnd, 1, 1@u_kOhm)
-circuit.R('3', 1, 'load', 1.5@u_kOhm)
-circuit.R('2', 1, circuit.gnd, 2@u_kOhm)
-circuit.V('', 'load', circuit.gnd, (v:=1@u_V))
-
-# %% simulate
-simulator = circuit.simulator()
-analysis = simulator.operating_point()
-i=u_A(float(-analysis.v))
-rth=v/i
-
 # %% display
 il=vl/rl
-vth=vl*((rth+rl)/rl)
+rth=vth/il-rl
 print('Thevenin equivalent voltage is: {:.2f} V'.format(float(vth)))
 print('Current flowing through load is: {:.2f} A'.format(float(il)))
 print('Thevenin equivalent resistance is: {:.2f} Ohm'.format(float(rth)))
